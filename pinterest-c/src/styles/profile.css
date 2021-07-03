@@ -1,0 +1,124 @@
+.profile_Screen{
+    margin-top: 22px;
+}
+.profile_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.profile{
+    text-align: center;
+}
+.profile > .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.row > p{
+    margin-right: 10px;
+    margin-top: 10px;
+    color: var(--common-theme)
+}
+.profile > img{
+    width: 123px;
+    height: 123px;
+    border-radius: 50%;
+}
+.icons_section{
+    display: flex;
+    flex-direction: row;
+    margin:30px 5px 30px 5px;
+}
+.profile > .profile_Name{
+    color:var(--common-theme);
+}
+.icons_section > .left_icons{
+    flex: 1 1 33%;
+    justify-content: flex-start;
+}
+.icons_section > .center_buttons{
+    flex: 1 1 33%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.icons_section > .right_icons{
+    flex: 1 1 33%;
+    justify-content: flex-end;
+}
+
+.center_buttons > button{
+    width: 90px;
+    outline-style: none;
+    border:none;
+    border-radius: 30px;
+    height: 50px;
+    color:black;
+    background-color:white;
+    padding:8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor:pointer;
+}
+.center_buttons > .noColor{
+    width: 60px;
+}
+.center_buttons > .active{ 
+    background-color: var(--common-theme) !important;
+    color:var(--common-theme1);
+}
+.center_buttons > button:hover{
+    background-color: rgb(224, 220, 220);
+}
+.icon{
+    color:var(--common-theme);
+}
+
+.user_Bio {
+    display: flex;
+    /* background-color: yellow; */
+    justify-content: center;
+}   
+.user_Bio >p{
+    width: 70%;
+    color:rgb(0, 0, 0);
+}
+.images{
+    display: flex;
+    position: relative;
+    margin-inline: 5%;
+}
+.images .img1{
+    border-radius: 30px;
+
+}
+.images > .img2{
+    position: absolute;
+    margin-left: 4%;
+    z-index: 2;
+    border-radius: 30px;
+}
+.images > .img:hover{
+    z-index: 5;
+    transform: scale(1.1);
+    transition: transform 0.4s ease;
+    
+}
+.images .img3{
+    position: absolute;
+    margin-left: 8%;
+    z-index: 3;
+    border-radius: 30px;
+}
+.blocks{
+    display: flex;
+}
+.block{
+    margin: 10px;
+}
+.blocks > .b2:hover{
+    background-color: aqua;
+    order:2;
+}

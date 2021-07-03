@@ -1,0 +1,12 @@
+[0918/003238.768:ERROR:process_reader_win.cc(127)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0918/003238.768:ERROR:process_reader_win.cc(127)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0918/003238.596:ERROR:process_reader_win.cc(127)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0918/003238.830:ERROR:exception_snapshot_win.cc(100)] thread ID 21724 not found in process
+[0918/003238.830:ERROR:exception_snapshot_win.cc(100)] thread ID 12416 not found in process
+[0918/003238.830:ERROR:exception_snapshot_win.cc(100)] thread ID 3344 not found in process
+[1011/220357.120:ERROR:settings.cc(430)] Settings version is not 5
+[1011/221357.195:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Asus\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\537812f6-a796-4df1-b82d-a9c44d09d28b: The system cannot find the path specified. (0x3)
+[1011/221357.265:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Asus\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\ae741056-89b3-47b7-bc22-85ae850ce724: The system cannot find the path specified. (0x3)
+[1011/221357.345:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Asus\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\e451b48f-72cc-4f98-ac62-3115bb79d4f9: The system cannot find the path specified. (0x3)
+[1011/221357.345:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1015/193451.097:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

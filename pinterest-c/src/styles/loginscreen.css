@@ -1,0 +1,77 @@
+.login_Container{
+    min-height: 100vh;
+    
+}
+.login_Container >.login_Screen{
+    height: 350px;
+    /* background-color: #e71b22; */
+    background: linear-gradient(to bottom, #e71b22, rgba(255, 255, 255, 0.281));
+    clip-path: ellipse(50.5% 90% at 50% 4%);
+    
+    animation: color-change 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    z-index: 1;
+}
+.login_Screen{
+}
+.login_View {
+    
+    display: grid;
+    place-content: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+
+}
+.login_View  img{
+    width: 140px;
+    height: 140px;
+}
+.login_Form{
+    position: relative;
+    width: 300px;
+    height: 450px;
+    background-color: white;
+    margin-top: -65%;
+    border-radius: 35px;
+    padding: 20px;
+    text-align: center;
+    /* border: 1px solid black */
+    z-index: 0;
+
+}
+
+form>input{
+    margin:15px;
+    padding: 15px;
+    width: 70%;
+    border-radius: 18px;
+    border-color: #e71b22;
+    
+    animation: color-change 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    font-size: medium;
+    outline: none;
+    /* background:red */
+}
+form>button{
+    padding:15px;
+    margin-top:18px;
+    font-size: medium;
+    width: 70%;
+    border-radius: 30px;
+    background-color: #e71b22;
+    cursor: pointer;
+    color: white;
+    border: white;
+}
+form>button:hover{
+    background-color: #b8001c;
+}
+.pin_Join{
+    padding: 10px;
+}
+.pin_Join strong{
+    cursor: pointer;
+}

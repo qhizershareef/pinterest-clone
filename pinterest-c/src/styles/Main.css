@@ -1,0 +1,169 @@
+.Pinterest_Images{
+    margin: 0 auto;
+    width:99%;
+    /* display: flex; */
+    column-count: 6;
+    /* flex-wrap: wrap; */
+    box-sizing: border-box;
+    column-gap:12px;
+    margin-bottom: 2%;
+/*    position: absolute;*/
+}
+
+.Pinterest_Images > .single_Image{
+    /* width: 240px; */
+    /* margin-left: 10px; */
+    margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+    /* z-index:100; */
+} 
+.single_Image:hover .img_Det{
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+    z-index: 99;
+}
+.Pinterest_Images > .single_Image img{
+    height: auto;
+    width:100%;
+    object-fit: cover;   
+    border-radius: 28px;
+    vertical-align:top;
+    min-height: 120px;
+    z-index: 100;
+}
+.pin_Link >.pin_Image:hover{
+    filter: brightness(85%);
+    /* filter:blur(2px); */
+    transition:  filter ease-in 0.15s;
+    /*-webkit-filter:brightness(25%); */
+    /* filter: grayscale(80%); */
+}
+
+.single_Image > .save_button{
+    background-color: #E60023;
+    color:white;
+    width:40px;
+    text-align: center;
+    height: 20px;
+    padding:10px;
+    font-size: 16px;
+    padding-left: 12px;
+    border-radius: 35px;
+    margin-bottom: -40px;
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    margin-right:10px;
+    opacity: 0;
+    /* position: absolute; */
+}
+.single_Image > .save_button:hover{
+    background-color: var(--save-btn-hover);
+}
+/*  
+    .single_Image >.Hide_save{
+        display: none;
+    } */
+    /* .save_button:hover{
+        background: #E60023;
+        background-color: rgba(230, 0, 35,0.7);
+    } 
+*/
+.single_Image> .img_info{
+    position: absolute;
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    margin-top:-21%;
+    opacity: 0;
+
+}
+.img_info > .Link_box{
+    height: 27px;
+    padding:6px;
+    padding-right: 25px;
+    border-radius: 40px;
+    margin-left: 5%;
+    margin-right: 4%;
+    max-width:60%;
+    background: rgba(255,255,255,0.7);
+    flex:1;
+}
+.Link_box > a{
+    text-decoration: none;
+    color:black;
+    font-weight: 500;
+}
+.img_info > .right_info{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5%;
+    margin-top: 2px;
+    max-width:40%
+}
+.right_info >div{
+    height: 25px;
+    width: 25px;
+    padding:5px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50px;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.save_Board_Options{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-left: 5%;
+    width: 110%;
+    height: 80%;
+    margin-top:20%;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 19px;
+    
+}
+
+.save_Board_Options > .newBoard{
+    margin: 20px 10px 10px 10px;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+}
+.newBoard #Board_Val{
+    width: 65%;
+
+    padding: 9px 8px 9px 8px;
+    border-radius: 15px;
+    border-style: solid;
+    font-size: 15px;
+}
+.newBoard #Board_Submit{
+    padding: 9px 6px 9px 6px;
+    width: auto;
+    max-width: 30%;
+    border-style: solid;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 13px;
+    background-color: #E60023;
+    color: white;
+}
+.save_Board_Options >.user_Boards_DropDown #Dropdown{
+    
+   max-height:50px;
+   overflow-y:scroll;
+}
+.save_Board_Options >.user_Boards_DropDown > select{
+    margin-left: 10px;
+    width: 90%;
+    height: 40px;
+    font: 20px;
+    font-weight: 600;
+    
+}
+.loader_Main{
+    margin:0 auto;
+    margin-top:18%;
+}

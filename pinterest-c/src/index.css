@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-clr);
+  
+  transition: 0.5s background-color;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root{
+  --background-clr:#ffffff;
+  --save-btn-color:#E60023;
+  --save-btn-hover:#b8001c;
+  --search-bar:#E1E1E1;
+  --active-nav: #000;
+  --inactive-nav: lightgray;
+  --head-icons: #7E7E7E;
+  --font-black: #000;
+  --icon-theme-hover:rgba(255,255,255,0.8);
+  --icon-theme-color:black;
+  --theme-icon-color:rgba(255, 255, 255, 0.3);
+  --header-icon:#7E7E7E;
+  --nav-active-color:white;
+  --common-theme:black;
+  --common-theme1:white;
+  --nav-back:rgba(0,0,0,0.6);
+  --pin-bg-grad:linear-gradient(to bottom, #e2e2e2, #ffffff);
+  --addpin-bg: #EFEFEF;
+}
+
+[data-theme="dark"] {
+  --background-clr:black;
+  --save-btn-color:#E60023;
+  --search-bar:rgba(255,255,255,0.2);
+  --search-bar-color:white;
+  --search-icon:white;  
+  --active-nav: #bfbfbf;
+  --inactive-nav: #676767;
+  --head-icons: #7E7E7E;
+  --font-black: #fff;
+  --icon-theme-hover:rgba(0,0,0,0.8);
+  --icon-theme-color:white;
+  --theme-icon-color:rgba(0, 0, 0, 0.3);
+  --header-icon:rgba(255,255,255,0.8);
+  --nav-active-color:black;
+  --common-theme:white;
+  --common-theme1:black;
+  --nav-back:rgba(255,255,255,0.6);
+  --addpin-bg: black;
+  --pin-bg-grad:linear-gradient(to bottom, #000, #434343);
+}

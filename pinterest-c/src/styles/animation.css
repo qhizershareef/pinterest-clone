@@ -1,0 +1,59 @@
+@keyframes color-change {
+    from{
+        filter: hue-rotate(0deg);
+    }   
+    to{
+        filter: hue-rotate(360deg);
+    }
+}
+
+.logo:hover{
+    animation: color-change 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+.theme_Icons{
+    position: absolute;
+    top: 35%;
+    margin:0px 30px 25px 0px;
+    padding: 5px;
+    border-radius: 20px;
+}
+/* .ui_Icons > .ui_Icon{
+    font-size: 50px;
+    color: black;
+    cursor: pointer;
+
+} */
+.theme_Icons >.visible{
+    display: none;
+}
+
+.theme_Icons >.light_Icon{
+    color:rgba(255, 255, 255, 0.5);
+}
+.theme_Icons >.dark_Icon{
+    color:rgba(10, 10, 10, 0.7);
+}
+.theme_Icons .theme_Icon{
+    position: fixed;
+    left: -18px;
+    transition: 0.3s;
+    padding: 15px 5px 15px 15px;
+    width: 38px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 0 5px 5px 0;
+    background-color: var(--theme-icon-color);
+    z-index: 100;
+    font-size: 30px;
+    cursor: pointer;
+}
+#mySidenav .theme_Icon:hover {
+    left: 0;
+    background-color: var(--icon-theme-hover);
+    color: var(--icon-theme-color)
+}
+  

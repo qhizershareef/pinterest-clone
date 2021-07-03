@@ -1,0 +1,74 @@
+@media only screen and (max-width: 1480px)  { 
+    .Pinterest_Images{
+      column-count: 5;
+      column-gap:14px;
+  }
+}
+@media only screen and (max-width: 1350px)  { 
+  .Pinterest_Images{
+      width:98%;
+      column-count: 4;
+      column-gap:15px;
+  }
+}
+@media only screen and (max-width: 1160px)  { 
+  .Pinterest_Images{
+      width:98%;
+      column-count: 3;
+      column-gap:15px;
+  }
+}
+@media only screen and (max-width: 800px)  { 
+  .Pinterest_Images{
+      width:98%;
+      column-count: 3;  
+      column-gap:15px;
+  }
+}
+@media only screen and (max-width: 750px){
+  .Pinterest_Images{
+      column-count: 2;
+      margin-bottom: 190px;
+      column-gap: 0px;
+  }
+  .Pinterest_Images > .single_Image{
+      /* width: 195px; */
+  } 
+   .Pinterest_Images > .single_Image{
+      /* float: left; */
+      /* width: 45%; */
+      margin-left:8px;
+      margin-bottom: 12px;
+  }   
+  .single_Image> .img_info{
+      width: 100%;
+  }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+}
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
