@@ -7,6 +7,8 @@ import {Switch, BrowserRouter as Router, Route, Redirect} from 'react-router-dom
 import ProfileComponent from './components/ProfileComponent';
 import PinScreen from './screens/PinScreen';
 import UserScreen from './screens/UserScreen';
+import Collection from './screens/CollectionScreen';
+
 function App() {
   return (
       <Router>
@@ -20,6 +22,7 @@ function App() {
           <Route path="/pin/:id?" component={PinScreen} />
           <Route path="/user/:uname" component={UserScreen}/>
           <Route path="/login" component={Login}/>
+          <Route path="/profile/collections/:name" component={Collection}/>
           <Redirect to="/" />
         </Switch>
       </Router>

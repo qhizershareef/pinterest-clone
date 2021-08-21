@@ -44,4 +44,20 @@ const pinLikeReducer = (state={},action) =>{
     }
 }
 
-export {getPinsReducer, getPinByIdReducer, pinLikeReducer}
+// collectionName
+const createCollectionReducer = (state={},action)=>{
+    switch(action.type){
+        case ActionTypes.PIN_COLLECTION_CREATE_REQUEST:
+            return { loading:true}
+        case ActionTypes.PIN_COLLECTION_CREATE_SUCCESS:
+            return { loading: false, success:true}
+        case ActionTypes.PIN_COLLECTION_CREATE_FAIL:
+            return { loading:false, error:action.payload}
+        case ActionTypes.PIN_COLLECTION_CREATE_RESET:
+            return { }
+        default:
+            return state;
+    }
+}
+
+export {getPinsReducer, getPinByIdReducer, pinLikeReducer, createCollectionReducer }

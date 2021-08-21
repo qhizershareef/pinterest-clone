@@ -30,7 +30,8 @@ const registerUser = asyncHandler(async (req,res) => {
             email:user.email,
             followers:user.followers,
             following:user.following,
-            token:generateToken(user._id)
+            token:generateToken(user._id),
+            collections: user.collections || []
         })
         console.log(user.password+'password');
     } else {
@@ -59,6 +60,8 @@ const authenticateUser = asyncHandler(async(req,res)=>{
                 profile:user.profile,
                 followers:user.followers,
                 following:user.following,
+                collections:user.collections || [],
+                // saved: user.saved || [],
                 token: generateToken(user._id)
             })
         }else{
@@ -141,6 +144,40 @@ const getUserDetails = asyncHandler(async(req,res)=>{
     const user = await User.findById(req.params.id).select('-password -email')
     res.json(user);
 });
+
+const savePin = asyncHandler(async (req,res) => {
+    const user = await User.findById(req.user.id);
+    const pin = req.params.id;
+    const collectionName = req.body.collectionName;
+    if(user){
+        user.saved.push({pin,collectionName});
+    }
+    await user.save();
+    res.json({pin,collectionName});
+    //use try catch next time
+})
+
+const getUserProfile = asyncHandler(async(req,res)=>{
+    const user = await User.findById(req.user.id).populate('saved.pin');
+    res.json(user);
+})
+const getUserCollections = asyncHandler(async(req,res)=>{
+    const user = await User.findById(req.user.id);
+    res.json(user.collections);
+});
+
+const getSavedPins = asyncHandler(async(req,res)=>{
+    console.log('inside getsaved pins');
+    console.log(req.params);
+    const user = await User.findById(req.user.id).populate('saved.pin');
+    const savedCollectionPins = user.saved.filter((saved)=> saved.collectionName === req.params.cname);
+    if(savedCollectionPins.length){
+        res.json(savedCollectionPins);
+    }else{
+        res.status(404)
+        throw new Error('No Saved Pins Found!')
+    }
+})
 // const getUsers = asyncHandler(async (req,res) => {
 //     const users = await User.find({}).select('-password');
 //     if(users){
@@ -152,4 +189,6 @@ const getUserDetails = asyncHandler(async(req,res)=>{
 
 // })
 
-export {registerUser, authenticateUser, updateUser, handleUserFollow, getUserDetails};
+export {registerUser, authenticateUser, updateUser, handleUserFollow, getUserDetails,getUserProfile
+    ,getUserCollections, savePin, getSavedPins
+};

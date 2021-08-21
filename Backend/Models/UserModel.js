@@ -29,17 +29,44 @@ const saveSchema = mongoose.Schema({
     required: true,
     ref: 'Pin',
   },
+  collectionName:{
+    type:String,
+    required:true,
+    unique: true
+  }
 },
 {
   timestamps: true,
 }
 )
+const LikedPinsSchema = mongoose.Schema({
+  pin:{
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Pin',
+  }
+},
+{
+  timestamps: true,
+})
+
+const collectionSchema = mongoose.Schema({
+  collectionName:{
+    type:String,
+    required:true,
+    unique: true
+  }
+})
 
 const userSchema = mongoose.Schema({
     name:{
         type:String,
         required:true,
         unique: true
+    },
+    description:{
+      type:String,
+      required:false,
     },
     email:{
         type:String,
@@ -53,10 +80,12 @@ const userSchema = mongoose.Schema({
     followers:[followersSchema],
     following:[followingSchema],
     saved:[saveSchema],
+    pins:[LikedPinsSchema],
     password:{
         type:String,
         required:true
-    }
+    },
+    collections:[collectionSchema],
     },
     {
       timestamps: true,

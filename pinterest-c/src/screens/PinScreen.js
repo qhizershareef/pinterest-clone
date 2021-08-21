@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import '../styles/pinscreen.css';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import PublishIcon from '@material-ui/icons/Publish';
 // import Pins from '../pins';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Avatar, IconButton } from '@material-ui/core';
 import { pinDetails, pinLikeAction } from '../actions/pinsActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import * as ActionTypes from '../actiontypes/pinsConstants';
-import { userFollowAction } from '../actions/userActions';
+import { userCollectionsRequest, userFollowAction } from '../actions/userActions';
 
 function PinScreen({match,history}) {
+    console.log('pinscreen');
+
+    const location = useLocation()
+    const [dropSelection, setDropSelection] = useState('');
+
 
     // const[liked, setLiked] = useState(false);
     // const[following, setFollowing] = useState(false);
@@ -33,10 +38,15 @@ function PinScreen({match,history}) {
     const userFollowStatus = useSelector(state=> state.userFollow);
     const {success:userFollowSuccess, error:userFollowError} = userFollowStatus;
 
+    const userCollections = useSelector(state=> state.userCollections);
+    const {loading:collectionsLoading, collections, error:collError} = userCollections;
+
     const displayModal = ()=>{
 
     }
-
+    const reset = useCallback(()=>{
+        dispatch({type:ActionTypes.PIN_DETAILS_RESET}) 
+    },[])
 
     const handleLike = () =>{
         if(!userInfo){
@@ -46,7 +56,13 @@ function PinScreen({match,history}) {
             dispatch(pinLikeAction(id))
         }
     }
-    
+
+    const handleSelect = (e)=>{
+        setDropSelection(e.target.value)
+        userInfo.selectedCollection = e.target.value;
+        console.log(userInfo.selectedCollection);
+    };
+
     const handleFollow =()=>{
         if(!userInfo){
             history.push('/login?redirect=pin/'+id);
@@ -59,9 +75,17 @@ function PinScreen({match,history}) {
     }
 
     useEffect(()=>{
-        // if(!Pin.title || Pin._id !== id || success) { 
+
         dispatch(pinDetails(id));
-        // dispatch({type:ActionTypes.PIN_DETAILS_RESET});
+
+        if(Pin && Pin._id !== id) { 
+            dispatch({type:ActionTypes.PIN_DETAILS_RESET});
+        
+        }
+        if(!collections){
+            dispatch(userCollectionsRequest());
+        }
+        
 
         // if(userFollowSuccess){
         //     dispatch()
@@ -72,10 +96,14 @@ function PinScreen({match,history}) {
         // if(userFollowSuccess){
         //     setFollowing(userInfo.following.some(el=> el.user== Pin.user._id))
         // }
-        return () => {
-            console.log('cleanup')
-            dispatch({type:ActionTypes.PIN_DETAILS_RESET}) 
-        }
+        // return(()=>{
+        //     dispatch({type:ActionTypes.PIN_DETAILS_RESET});
+        // })
+        // return () => {
+        //     console.log('cleanup')
+        //     if(success){
+        //     }
+        // }
     },[dispatch,id,success,userFollowSuccess,userInfo])
 
     return (
@@ -94,10 +122,16 @@ function PinScreen({match,history}) {
                         <PublishIcon className="l_Icon"/>
                     </div>
                     <div className="post_Board">
-                        <select name="select" id="dropDown" className="drop">
-                            <option disabled={true} selected={true}> Select</option>
-                            <option onClick={displayModal}>Add Board</option>
-                            <option value="Photography">Photography</option>
+                        <select name="select" id="dropDown" className="drop" 
+                            onChange={(e)=>handleSelect(e)}
+                        >
+                            <option value="DEFAULT" disabled={true} selected={userInfo && !userInfo.selectedCollection}>Select</option>
+                            {
+                                collections && collections.map((c,i)=><option key={i} value={collections.collectionName}>{c.collectionName}</option>)
+                            }
+                            {/* <option onClick={displayModal}>Add Board</option>
+                            <option value="Photography">Photography</option> */}
+                            {/* collections */}
                         </select>
                         <button>
                             Save

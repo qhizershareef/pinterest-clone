@@ -1,5 +1,7 @@
 import asyncHandler from 'express-async-handler';
 import Pin from '../Models/PinsModel.js'
+import User from '../Models/UserModel.js';
+
 // import asyncHandler from 'express-async-handler'
 const getPins = asyncHandler( async (req, res) =>{
         const pins = await Pin.find({})
@@ -49,6 +51,24 @@ const handlePinLike = asyncHandler(async(req,res)=>{
     }
 })
 
+const createBoard = asyncHandler(async (req,res) => {
+    // console.log(req.body.name)
+    const user = await User.findById(req.user._id);
+
+    const {collectionName} = req.body;
+
+    const BoardExists = user.collections.some(el=>String(el.collectionName)==collectionName)
+
+    if(user && !BoardExists){
+        user.collections.push({collectionName: collectionName});
+        const updatedUser = await user.save();
+        res.json(updatedUser)
+    } else {
+        res.status(400)
+        throw new Error('Invalid user or Board already exists')
+    }
+})
+
 const image_Upload = asyncHandler(async (req,res) => {
     try {
         const pin = req.body;
@@ -65,4 +85,4 @@ const image_Upload = asyncHandler(async (req,res) => {
 
 
 
-export { getPins, getPinById, handlePinLike };
+export { getPins, getPinById, handlePinLike, createBoard};

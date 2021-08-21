@@ -5,19 +5,24 @@ import '../styles/responsive.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPins } from '../actions/pinsActions';
 import Loader from './Loader';
+import OverLaySave from './OverLaySave';
+
 
 function  Main () { 
     
     const dispatch = useDispatch();
-
+    const [Pin,SetPin] = useState({});
+    const [modal, setModal] = useState(false);
     const pinsData = useSelector(state=> state.getPins);
     const {loading, pins, error} = pinsData;
 
+    console.log(modal)
     useEffect(()=>{
         dispatch(getPins())
     },[dispatch])
     return (
         <div>
+            {modal && <OverLaySave pin={Pin} setModal={setModal} modal={modal}/>}
             {
                 loading 
                     &&
@@ -29,7 +34,7 @@ function  Main () {
                 
                 {
                     pins && pins.map(pin=>
-                            <ImageComponent pinData={pin} key={pin._id}/>
+                            <ImageComponent pinData={pin} key={pin._id} callback={SetPin} setModal={setModal}/>
                         )
                 }
                 

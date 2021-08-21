@@ -49,6 +49,7 @@ function Login({location,history}) {
 
     },[dispatch, userInfo, userRegInfo])
 
+    console.log('login')
     return (
         <div className="login_Container" style={{background:'white'}}>
             <div className="login_Screen">
@@ -111,7 +112,7 @@ function Login({location,history}) {
                 </div>
                 { (error || regError) && 
                     <Alert variant="danger">
-                        {error}
+                        {error || regError}
                     </Alert>
                 }
             </div>

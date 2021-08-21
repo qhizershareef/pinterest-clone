@@ -1,0 +1,1 @@
+//reusable list screen component for followers/ following and others if any

@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { getPinByIdReducer, getPinsReducer, pinLikeReducer } from './reducers/pinsreducer';
-import { userFollowReducer, userLoginReducer, userRegisterReducer } from './reducers/userReducer';
+import { createCollectionReducer, getPinByIdReducer, getPinsReducer, pinLikeReducer } from './reducers/pinsreducer';
+import { userCollectionsReducer, userFollowReducer, userLoginReducer, userProfileReducer, userRegisterReducer, userSavedPinsReducer, userSavePinReducer } from './reducers/userReducer';
 
 const reducer = combineReducers({
     getPins:getPinsReducer,
@@ -10,7 +10,12 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     pinLike: pinLikeReducer,
     userRegister: userRegisterReducer,
-    userFollow: userFollowReducer
+    userFollow: userFollowReducer,
+    userProfile: userProfileReducer,
+    createCollection: createCollectionReducer,
+    userCollections:userCollectionsReducer,
+    userSavePin: userSavePinReducer,
+    userSavedPins: userSavedPinsReducer
 })
 
 const userInfoFromLocal = localStorage.getItem('userInfo');
