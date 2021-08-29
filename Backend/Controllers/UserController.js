@@ -158,7 +158,7 @@ const savePin = asyncHandler(async (req,res) => {
 })
 
 const getUserProfile = asyncHandler(async(req,res)=>{
-    const user = await User.findById(req.user.id).populate('saved.pin');
+    const user = await User.findById(req.user.id).populate('saved.pin').select('-password -email');
     res.json(user);
 })
 const getUserCollections = asyncHandler(async(req,res)=>{
@@ -169,8 +169,9 @@ const getUserCollections = asyncHandler(async(req,res)=>{
 const getSavedPins = asyncHandler(async(req,res)=>{
     console.log('inside getsaved pins');
     console.log(req.params);
-    const user = await User.findById(req.user.id).populate('saved.pin');
-    const savedCollectionPins = user.saved.filter((saved)=> saved.collectionName === req.params.cname);
+    const user = await User.findById(req.user.id).populate('saved.pin')
+    const savedCollectionPins = user.saved.filter((saved)=> String(saved.collectionName) == req.params.cname);
+
     if(savedCollectionPins.length){
         res.json(savedCollectionPins);
     }else{
@@ -178,6 +179,22 @@ const getSavedPins = asyncHandler(async(req,res)=>{
         throw new Error('No Saved Pins Found!')
     }
 })
+
+const deleteSavedPin = asyncHandler(async(req,res)=>{
+    console.log('inside getsaved pins');
+    console.log(req.params);
+    const savedPinToDelete= req.params.id;
+    const user = await User.findById(req.user.id)  
+    user.saved.splice(user.saved.findIndex(saved=> saved._id == savedPinToDelete),1);
+    await user.save();
+    res.json('success');
+    // }else{
+    //     res.status(404)
+    //     throw new Error('No Saved Pins Found!')
+    // }
+})
+
+
 // const getUsers = asyncHandler(async (req,res) => {
 //     const users = await User.find({}).select('-password');
 //     if(users){
@@ -190,5 +207,5 @@ const getSavedPins = asyncHandler(async(req,res)=>{
 // })
 
 export {registerUser, authenticateUser, updateUser, handleUserFollow, getUserDetails,getUserProfile
-    ,getUserCollections, savePin, getSavedPins
+    ,getUserCollections, savePin, getSavedPins, deleteSavedPin
 };
