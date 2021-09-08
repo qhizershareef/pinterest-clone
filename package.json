@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon Backend/server.js",
-    "client": "npm start --prefix pinterest-c"
+    "client": "npm start --prefix pinterest-c",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix pinterest-c && npm run build --prefix pinterest-c"
   },
   "author": "qhizer shareef",
   "license": "ISC"

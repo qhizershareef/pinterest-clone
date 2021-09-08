@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 import pinsRouter from './Routes/PinsRoutes.js';
 import usersRouter from './Routes/UserRoutes.js';
 import { errorHandler, errorNotFound } from './Middleware/errorMiddleware.js';
+import path from 'path';
 
 dotenv.config();
 
@@ -28,17 +29,33 @@ app.use('/api/pins',pinsRouter)
 app.use('/api/users',usersRouter)
 
 // @desc public GET api/pins
-app.get('/pins',(req,res)=>{
-    res.json(Pins)
-})
+// app.get('/pins',(req,res)=>{
+//     res.json(Pins)
+// })
+
+const __dirname = path.resolve()
+// app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/pinterest-c/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'pinterest-c', 'build', 'index.html'))
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....')
+  })
+}
+
 
 // @desc public GET api/pins/:id
-app.get('/pins/:id',(req,res)=>{
-    const id = req.params.id;
-    console.log(id)
-    const pin = Pins.find(pin=> pin.id===id);
-    res.json(pin)
-})
+// app.get('/pins/:id',(req,res)=>{
+//     const id = req.params.id;
+//     console.log(id)
+//     const pin = Pins.find(pin=> pin.id===id);
+//     res.json(pin)
+// })
 app.use(errorNotFound)
 app.use(errorHandler)
 app.listen(port,()=>{
