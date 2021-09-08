@@ -80,6 +80,8 @@ const image_Upload = asyncHandler(async (req,res) => {
     }
 })
 
+
+
 const updatePin = asyncHandler(async (req,res) => {
     const userId = req.user._id;
     const pin = await Pin.findById(req.params.id).populate('user','name');
@@ -103,6 +105,21 @@ const updatePin = asyncHandler(async (req,res) => {
 //upload pin controller, you need to wait until the link is being fetched from firebase
 //if linkExists? go for the mongodb upload
 
+const createPin = asyncHandler(async(req,res)=>{
+    try {
+        const {pin, title, board, description, link,} = req.body;
+        const createPin = new Pin({
+            user: req.user._id,
+            pin, title, board, description, link,
+        })
 
+        const createdPin = await createPin.save();
+        res.status(201).json(createdPin)
 
-export { getPins, getPinById, handlePinLike, createBoard, updatePin};
+    } catch (error) {
+        res.status(404)
+        throw new Error('You cannot update this pin, not authorized!');
+    }
+})
+
+export { getPins, getPinById, handlePinLike, createBoard, updatePin, createPin};

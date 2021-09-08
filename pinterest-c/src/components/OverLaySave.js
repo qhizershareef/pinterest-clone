@@ -102,7 +102,7 @@ const OverLaySave = memo (({pin,setModal, modal}) => {
                     {
                     (success || scc) &&
                         <Alert variant="success">
-                            {success && 'Collection Created!' || scc}
+                            {(success && 'Collection Created!') || scc}
                         </Alert>
                     }
                 </div>
